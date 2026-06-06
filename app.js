@@ -91,6 +91,7 @@ function renderThemeView() {
     const theme = data.themes[currentThemeId];
     document.getElementById('theme-title').textContent = theme.name;
 
+    // Заметки темы
     const notesContainer = document.getElementById('theme-notes-list');
     notesContainer.innerHTML = '';
     const notes = theme.notes || [];
@@ -101,6 +102,7 @@ function renderThemeView() {
 
     notes.forEach((note, i) => renderNoteItem(note, i, notesContainer, 'theme'));
 
+    // Подкатегории
     const subcatsContainer = document.getElementById('subcats-list');
     subcatsContainer.innerHTML = '';
     const subcats = Object.entries(theme.subcategories || {});
@@ -235,7 +237,6 @@ function renderNoteItem(note, index, container, location) {
         </div>
     `;
 
-    // Заменяем input на div contenteditable для многострочного текста
     const textClass = hasStatus ? (isDone ? 'done' : 'not-done') : '';
 
     div.innerHTML = `
