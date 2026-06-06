@@ -114,6 +114,7 @@ function renderThemeView() {
         div.className = 'item';
         div.innerHTML = `
             <span style="flex:1">${escapeHtml(subcat.name)}</span>
+            <button class="delete-btn" onclick="event.stopPropagation(); deleteSubcategory('${id}')">🗑</button>
             <span class="item-arrow">→</span>
         `;
         div.onclick = () => openSubcategory(id);
@@ -185,6 +186,17 @@ function addSubcategory() {
     saveData();
     renderThemeView();
     openSubcategory(id);
+}
+
+function deleteSubcategory(id) {
+    if (!confirm('Удалить подкатегорию и все её заметки?')) return;
+    delete data.themes[currentThemeId].subcategories[id];
+    if (currentSubcatId === id) {
+        currentSubcatId = null;
+        goBackToTheme();
+    }
+    saveData();
+    renderThemeView();
 }
 
 function editCurrentSubcat() {
