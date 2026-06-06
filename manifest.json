@@ -1,8 +1,8 @@
 {
-  "name": "Мои заметки",
-  "short_name": "Заметки",
+  "name": "ANotes",
+  "short_name": "ANotes",
   "description": "Личные заметки с темами и подкатегориями",
-  "start_url": "/",
+  "start_url": "https://antoniominchenko-source.github.io/MyNotesApp/",
   "display": "standalone",
   "background_color": "#0d0d0d",
   "theme_color": "#0d0d0d",
