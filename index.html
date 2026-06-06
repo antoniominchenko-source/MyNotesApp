@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заметки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Стартовый экран: Темы -->
+        <div id="view-themes" class="view active">
+            <header>
+                <h1>Темы</h1>
+            </header>
+            <div id="themes-list" class="list"></div>
+            <button class="fab" onclick="addTheme()">+</button>
+        </div>
+
+        <!-- Экран темы: заметки + подкатегории -->
+        <div id="view-theme" class="view">
+            <header>
+                <button class="back" onclick="goBack()">←</button>
+                <h1 id="theme-title"></h1>
+                <button class="icon-btn" onclick="editCurrentTheme()">✎</button>
+            </header>
+            <div class="section-title">Заметки</div>
+            <div id="theme-notes-list" class="list"></div>
+            <div class="input-row">
+                <input type="text" id="theme-note-input" placeholder="Новая заметка...">
+                <label class="toggle-label">
+                    <input type="checkbox" id="theme-status-toggle">
+                    <span>Статус</span>
+                </label>
+                <button onclick="addThemeNote()">Добавить</button>
+            </div>
+            <div class="divider"></div>
+            <div class="section-title">Подкатегории</div>
+            <div id="subcats-list" class="list"></div>
+            <button class="fab" onclick="addSubcategory()">+</button>
+        </div>
+
+        <!-- Экран подкатегории: заметки -->
+        <div id="view-subcat" class="view">
+            <header>
+                <button class="back" onclick="goBackToTheme()">←</button>
+                <h1 id="subcat-title"></h1>
+                <button class="icon-btn" onclick="editCurrentSubcat()">✎</button>
+            </header>
+            <div id="subcat-notes-list" class="list"></div>
+            <div class="input-row">
+                <input type="text" id="subcat-note-input" placeholder="Новая заметка...">
+                <label class="toggle-label">
+                    <input type="checkbox" id="subcat-status-toggle">
+                    <span>Статус</span>
+                </label>
+                <button onclick="addSubcatNote()">Добавить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалка для редактирования названия -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <input type="text" id="edit-input" placeholder="Название...">
+            <div class="modal-actions">
+                <button onclick="cancelEdit()">Отмена</button>
+                <button onclick="confirmEdit()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
